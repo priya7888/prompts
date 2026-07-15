@@ -2,7 +2,7 @@
  * PromptOps Evaluation Dashboard Frontend Application Code
  */
 
-const API_BASE = '/api';
+const API_BASE = 'https://prompts-b6sy.onrender.com/api';
 
 class PromptOpsApp {
   constructor() {
