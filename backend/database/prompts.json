@@ -1,0 +1,59 @@
+[
+  {
+    "id": "prompt-1",
+    "name": "Customer Support Classifier",
+    "description": "Classifies incoming customer support queries into Billing, Technical Support, Account Security, or General Inquiry.",
+    "createdAt": "2026-07-10T10:00:00Z",
+    "latestVersion": 2,
+    "versions": [
+      {
+        "version": 1,
+        "systemPrompt": "You are a customer support triage assistant. Classify the user query into: Billing, Technical, Accounts, or General.",
+        "userPromptTemplate": "Classify this query: {query}",
+        "createdAt": "2026-07-10T10:00:00Z"
+      },
+      {
+        "version": 2,
+        "systemPrompt": "You are a customer support triage assistant. Classify the user query into: Billing, Technical Support, Account Security, or General Inquiry. Return ONLY the category name and nothing else.",
+        "userPromptTemplate": "Query to classify: {query}\nCategory:",
+        "createdAt": "2026-07-11T08:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "prompt-2",
+    "name": "E-commerce Summarizer",
+    "description": "Summarizes customer reviews and extracts lists of pros and cons.",
+    "createdAt": "2026-07-11T09:00:00Z",
+    "latestVersion": 2,
+    "versions": [
+      {
+        "version": 1,
+        "systemPrompt": "Summarize the customer review in one concise sentence. Then list up to 3 pros and 3 cons in bullet points.",
+        "userPromptTemplate": "Review:\n{review}\n\nSummary and Highlights:",
+        "createdAt": "2026-07-11T09:00:00Z"
+      },
+      {
+        "version": 2,
+        "systemPrompt": "Summarize the customer review in one concise sentence. Then list up to 3 pros and 3 cons in bullet points.",
+        "userPromptTemplate": "Review:\n{review}\n\nSummary and Highlights:",
+        "createdAt": "2026-07-14T07:12:33.524Z"
+      }
+    ]
+  },
+  {
+    "id": "prompt-1784013140220",
+    "name": "en wd",
+    "description": "we,l",
+    "createdAt": "2026-07-14T07:12:20.220Z",
+    "latestVersion": 1,
+    "versions": [
+      {
+        "version": 1,
+        "systemPrompt": "qed",
+        "userPromptTemplate": "qewdf",
+        "createdAt": "2026-07-14T07:12:20.221Z"
+      }
+    ]
+  }
+]

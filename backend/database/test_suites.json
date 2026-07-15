@@ -1,0 +1,100 @@
+[
+  {
+    "id": "suite-1",
+    "name": "Classifier Benchmarks",
+    "description": "Validation checks for standard support queries to test classification accuracy.",
+    "promptId": "prompt-1",
+    "variables": [
+      "query"
+    ],
+    "testCases": [
+      {
+        "id": "tc-1",
+        "variables": {
+          "query": "I am locked out of my account and need a password reset."
+        },
+        "expected": "Account Security",
+        "assertions": [
+          {
+            "type": "contains",
+            "value": "Account Security"
+          },
+          {
+            "type": "length_less_than",
+            "value": "20"
+          }
+        ]
+      },
+      {
+        "id": "tc-2",
+        "variables": {
+          "query": "Why was I charged $49.99 yesterday? I cancelled my subscription last month."
+        },
+        "expected": "Billing",
+        "assertions": [
+          {
+            "type": "contains",
+            "value": "Billing"
+          },
+          {
+            "type": "length_less_than",
+            "value": "20"
+          }
+        ]
+      },
+      {
+        "id": "tc-3",
+        "variables": {
+          "query": "My screen is flashing red and the app crashed on load."
+        },
+        "expected": "Technical Support",
+        "assertions": [
+          {
+            "type": "contains",
+            "value": "Technical Support"
+          },
+          {
+            "type": "length_less_than",
+            "value": "20"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suite-2",
+    "name": "E-Commerce Review Benchmarks",
+    "description": "Validation checks for extracting pros, cons, and summaries from user reviews.",
+    "promptId": "prompt-2",
+    "variables": [
+      "review"
+    ],
+    "testCases": [
+      {
+        "id": "tc-4",
+        "variables": {
+          "review": "This camera is fantastic! The battery lasts for days and the image quality is crisp. However, the strap is uncomfortable and it's quite heavy to carry around."
+        },
+        "expected": "Summarized output containing pros/cons.",
+        "assertions": [
+          {
+            "type": "contains",
+            "value": "Pros"
+          },
+          {
+            "type": "contains",
+            "value": "Cons"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suite-1784013364009",
+    "name": "hjg",
+    "description": "hvb",
+    "promptId": "prompt-1784013140220",
+    "variables": [],
+    "testCases": []
+  }
+]

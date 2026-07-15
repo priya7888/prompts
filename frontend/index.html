@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptOps Evaluation Dashboard</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Local Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon"></div>
+        <h2>PromptOps</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-tab="dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="prompts">
+          <i data-lucide="terminal"></i>
+          <span>Prompt Library</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="suites">
+          <i data-lucide="test-tube"></i>
+          <span>Test Suites</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="runner">
+          <i data-lucide="play-circle"></i>
+          <span>Run Evaluations</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="history">
+          <i data-lucide="history"></i>
+          <span>History & Reports</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-indicator online"></div>
+        <span>Connected to API</span>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <h1 id="page-title">Dashboard</h1>
+          <p id="page-subtitle" class="subtitle">Overview of prompt optimization and benchmarks</p>
+        </div>
+        <div class="header-right">
+          <div class="time-widget">
+            <i data-lucide="clock"></i>
+            <span id="current-time">07:20:00 AM</span>
+          </div>
+          <button class="btn btn-secondary btn-icon" id="btn-refresh-data">
+            <i data-lucide="refresh-cw"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD -->
+      <section class="tab-pane active" id="tab-dashboard">
+        <!-- KPI Cards Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Average Quality Score</span>
+              <div class="kpi-icon score-icon"><i data-lucide="award"></i></div>
+            </div>
+            <div class="kpi-value" id="kpi-avg-score">88.5%</div>
+            <div class="kpi-subtext"><span class="trend-up"><i data-lucide="trending-up"></i> +6.1%</span> vs last run</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Average Latency</span>
+              <div class="kpi-icon latency-icon"><i data-lucide="zap"></i></div>
+            </div>
+            <div class="kpi-value" id="kpi-avg-latency">740ms</div>
+            <div class="kpi-subtext"><span class="trend-down"><i data-lucide="trending-down"></i> -15%</span> shorter latency</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total API Cost</span>
+              <div class="kpi-icon cost-icon"><i data-lucide="dollar-sign"></i></div>
+            </div>
+            <div class="kpi-value" id="kpi-total-cost">$0.0032</div>
+            <div class="kpi-subtext">Cumulative token expenditure</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Evaluation Runs</span>
+              <div class="kpi-icon runs-icon"><i data-lucide="check-check"></i></div>
+            </div>
+            <div class="kpi-value" id="kpi-run-count">12</div>
+            <div class="kpi-subtext">Total executions completed</div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>Model Quality vs. Latency</h3>
+            <div class="chart-container">
+              <canvas id="chart-models-comparison"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Evaluation Score Progress Timeline</h3>
+            <div class="chart-container">
+              <canvas id="chart-runs-timeline"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Runs list -->
+        <div class="recent-runs-card">
+          <div class="card-header">
+            <h3>Recent Evaluation Runs</h3>
+            <button class="btn btn-sm btn-secondary" onclick="app.switchTab('history')">View All</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Prompt</th>
+                  <th>Version</th>
+                  <th>Test Suite</th>
+                  <th>Average Score</th>
+                  <th>Avg Latency</th>
+                  <th>Cost</th>
+                  <th>Date & Time</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recent-runs-list">
+                <tr>
+                  <td colspan="8" class="text-center">Loading evaluation history...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PROMPT LIBRARY -->
+      <section class="tab-pane" id="tab-prompts">
+        <div class="split-pane">
+          <!-- Prompts Sidebar List -->
+          <div class="split-sidebar">
+            <div class="sidebar-header-actions">
+              <h3>Prompts</h3>
+              <button class="btn btn-primary btn-sm" id="btn-create-prompt">
+                <i data-lucide="plus"></i> New Prompt
+              </button>
+            </div>
+            <div class="item-list" id="prompts-list">
+              <!-- Render dynamically -->
+            </div>
+          </div>
+
+          <!-- Prompt Details Panel -->
+          <div class="split-detail" id="prompt-detail-panel">
+            <div class="empty-state">
+              <i data-lucide="terminal" class="giant-icon"></i>
+              <h3>No Prompt Selected</h3>
+              <p>Select a prompt from the sidebar or create a new one to manage versioning and templates.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: TEST SUITES -->
+      <section class="tab-pane" id="tab-suites">
+        <div class="split-pane">
+          <!-- Suites Sidebar List -->
+          <div class="split-sidebar">
+            <div class="sidebar-header-actions">
+              <h3>Test Suites</h3>
+              <button class="btn btn-primary btn-sm" id="btn-create-suite">
+                <i data-lucide="plus"></i> New Suite
+              </button>
+            </div>
+            <div class="item-list" id="suites-list">
+              <!-- Render dynamically -->
+            </div>
+          </div>
+
+          <!-- Suite Details Panel -->
+          <div class="split-detail" id="suite-detail-panel">
+            <div class="empty-state">
+              <i data-lucide="test-tube" class="giant-icon"></i>
+              <h3>No Test Suite Selected</h3>
+              <p>Select a test suite or create a new one to design benchmark payloads and assertions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: RUN EVALUATIONS -->
+      <section class="tab-pane" id="tab-runner">
+        <div class="card runner-card">
+          <h2>Run Prompt Benchmarks</h2>
+          <p class="subtitle text-muted">Test prompt versions against specific benchmarks in parallel across models.</p>
+
+          <form id="runner-form" class="runner-form-grid">
+            <div class="form-group">
+              <label for="runner-prompt-select">Target Prompt</label>
+              <select id="runner-prompt-select" class="form-control" required>
+                <option value="">Select prompt...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="runner-version-select">Version</label>
+              <select id="runner-version-select" class="form-control" required disabled>
+                <option value="">Select version...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="runner-suite-select">Test Suite</label>
+              <select id="runner-suite-select" class="form-control" required>
+                <option value="">Select test suite...</option>
+              </select>
+            </div>
+
+            <div class="form-group span-full">
+              <label>Select Benchmark Models</label>
+              <div class="model-selection-grid">
+                <label class="model-checkbox-card">
+                  <input type="checkbox" name="models" value="gemini-1.5-flash" checked>
+                  <div class="model-checkbox-content">
+                    <span class="model-badge model-flash">Gemini 1.5 Flash</span>
+                    <span class="model-meta">Fastest, low-cost</span>
+                  </div>
+                </label>
+                <label class="model-checkbox-card">
+                  <input type="checkbox" name="models" value="gemini-1.5-pro" checked>
+                  <div class="model-checkbox-content">
+                    <span class="model-badge model-pro">Gemini 1.5 Pro</span>
+                    <span class="model-meta">Highly analytical, multimodal</span>
+                  </div>
+                </label>
+                <label class="model-checkbox-card">
+                  <input type="checkbox" name="models" value="claude-3-5-sonnet" checked>
+                  <div class="model-checkbox-content">
+                    <span class="model-badge model-claude">Claude 3.5 Sonnet</span>
+                    <span class="model-meta">Precise logic, concise answers</span>
+                  </div>
+                </label>
+                <label class="model-checkbox-card">
+                  <input type="checkbox" name="models" value="gpt-4o" checked>
+                  <div class="model-checkbox-content">
+                    <span class="model-badge model-gpt">GPT-4o</span>
+                    <span class="model-meta">Broad understanding, reasoning</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="span-full text-right actions-row">
+              <button type="submit" class="btn btn-lg btn-glow" id="btn-run-evaluation">
+                <i data-lucide="play"></i> Launch Benchmark Run
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Terminal Console Logger -->
+        <div class="card terminal-card" id="runner-console" style="display: none;">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">Runner Output Console</span>
+            <div class="terminal-status" id="console-status">Idle</div>
+          </div>
+          <div class="terminal-body" id="console-logs">
+            <!-- Simulated real-time console messages will render here -->
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="runner-progress" style="width: 0%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: HISTORY & REPORTS -->
+      <section class="tab-pane" id="tab-history">
+        <div class="card history-card">
+          <div class="card-header">
+            <h2>Evaluation Runs History</h2>
+            <p class="subtitle text-muted">Complete audit log of prompt performance regressions and test runs.</p>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Run ID</th>
+                  <th>Prompt</th>
+                  <th>Version</th>
+                  <th>Test Suite</th>
+                  <th>Avg Accuracy Score</th>
+                  <th>Avg Latency</th>
+                  <th>Total Cost</th>
+                  <th>Date Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="full-history-list">
+                <tr>
+                  <td colspan="9" class="text-center">Loading evaluations...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- RUN DETAILS MODAL (Matrix Comparison Panel) -->
+  <div class="modal-backdrop" id="run-detail-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-run-title">Evaluation Run Details</h2>
+          <p id="modal-run-subtitle" class="subtitle text-muted">Comparison results for v2 of Support Classifier</p>
+        </div>
+        <button class="btn-close" id="btn-close-modal"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="run-meta-summary">
+          <div class="meta-item">
+            <span class="meta-label">Total Test Cases</span>
+            <span class="meta-val" id="modal-meta-cases">3</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Overall Avg Score</span>
+            <span class="meta-val highlight" id="modal-meta-score">94.6%</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Total API Cost</span>
+            <span class="meta-val" id="modal-meta-cost">$0.0014</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Avg Execution Latency</span>
+            <span class="meta-val" id="modal-meta-latency">780ms</span>
+          </div>
+        </div>
+
+        <div class="results-matrix-container">
+          <h3 class="section-title">Test Case Performance Matrix</h3>
+          <div id="modal-matrix-content">
+            <!-- Renders dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Main Code -->
+  <script src="app.js"></script>
+</body>
+</html>

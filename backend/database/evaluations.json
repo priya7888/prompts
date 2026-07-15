@@ -1,0 +1,765 @@
+[
+  {
+    "id": "run-1",
+    "promptId": "prompt-1",
+    "promptVersion": 1,
+    "testSuiteId": "suite-1",
+    "createdAt": "2026-07-10T11:15:00Z",
+    "models": [
+      "gemini-1.5-flash",
+      "gpt-4o",
+      "claude-3-5-sonnet"
+    ],
+    "summary": {
+      "avgScore": 68.3,
+      "avgLatency": 920,
+      "totalCost": 0.00185,
+      "testCaseCount": 3
+    },
+    "results": [
+      {
+        "testCaseId": "tc-1",
+        "variables": {
+          "query": "I am locked out of my account and need a password reset."
+        },
+        "expected": "Account Security",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Category: Accounts\nReason: The user requires access assistance.",
+            "latency": 540,
+            "tokens": {
+              "prompt": 45,
+              "completion": 18
+            },
+            "cost": 0.000045,
+            "scores": {
+              "correctness": 60,
+              "schema": 100,
+              "coherence": 80
+            },
+            "averageScore": 80,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Accounts and Access Control / Security",
+            "latency": 1120,
+            "tokens": {
+              "prompt": 40,
+              "completion": 7
+            },
+            "cost": 0.00032,
+            "scores": {
+              "correctness": 70,
+              "schema": 100,
+              "coherence": 90
+            },
+            "averageScore": 86.7,
+            "regression": false,
+            "feedback": {
+              "rating": 4,
+              "comment": "Matches intent but slightly wordy."
+            }
+          },
+          "claude-3-5-sonnet": {
+            "output": "Category: Accounts",
+            "latency": 880,
+            "tokens": {
+              "prompt": 42,
+              "completion": 4
+            },
+            "cost": 0.000186,
+            "scores": {
+              "correctness": 60,
+              "schema": 100,
+              "coherence": 95
+            },
+            "averageScore": 85,
+            "regression": false,
+            "feedback": null
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-2",
+        "variables": {
+          "query": "Why was I charged $49.99 yesterday? I cancelled my subscription last month."
+        },
+        "expected": "Billing",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Category: Billing\nReason: Query concerns charge details.",
+            "latency": 620,
+            "tokens": {
+              "prompt": 50,
+              "completion": 15
+            },
+            "cost": 0.000048,
+            "scores": {
+              "correctness": 80,
+              "schema": 100,
+              "coherence": 85
+            },
+            "averageScore": 88.3,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Billing",
+            "latency": 990,
+            "tokens": {
+              "prompt": 45,
+              "completion": 2
+            },
+            "cost": 0.00028,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": {
+              "rating": 5,
+              "comment": "Perfect answer."
+            }
+          },
+          "claude-3-5-sonnet": {
+            "output": "Billing Inquiry",
+            "latency": 820,
+            "tokens": {
+              "prompt": 47,
+              "completion": 3
+            },
+            "cost": 0.000192,
+            "scores": {
+              "correctness": 90,
+              "schema": 100,
+              "coherence": 98
+            },
+            "averageScore": 96,
+            "regression": false,
+            "feedback": null
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-3",
+        "variables": {
+          "query": "My screen is flashing red and the app crashed on load."
+        },
+        "expected": "Technical Support",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Category: Technical\nReason: App crash/visual issue.",
+            "latency": 510,
+            "tokens": {
+              "prompt": 48,
+              "completion": 14
+            },
+            "cost": 0.000044,
+            "scores": {
+              "correctness": 60,
+              "schema": 100,
+              "coherence": 80
+            },
+            "averageScore": 80,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Technical Support Query",
+            "latency": 1200,
+            "tokens": {
+              "prompt": 43,
+              "completion": 4
+            },
+            "cost": 0.0003,
+            "scores": {
+              "correctness": 80,
+              "schema": 100,
+              "coherence": 95
+            },
+            "averageScore": 91.7,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Technical Support",
+            "latency": 910,
+            "tokens": {
+              "prompt": 45,
+              "completion": 3
+            },
+            "cost": 0.000189,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": {
+              "rating": 5,
+              "comment": "Exactly correct."
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "run-2",
+    "promptId": "prompt-1",
+    "promptVersion": 2,
+    "testSuiteId": "suite-1",
+    "createdAt": "2026-07-11T08:15:00Z",
+    "models": [
+      "gemini-1.5-flash",
+      "gpt-4o",
+      "claude-3-5-sonnet"
+    ],
+    "summary": {
+      "avgScore": 94.6,
+      "avgLatency": 780,
+      "totalCost": 0.00142,
+      "testCaseCount": 3
+    },
+    "results": [
+      {
+        "testCaseId": "tc-1",
+        "variables": {
+          "query": "I am locked out of my account and need a password reset."
+        },
+        "expected": "Account Security",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Account Security",
+            "latency": 450,
+            "tokens": {
+              "prompt": 55,
+              "completion": 3
+            },
+            "cost": 0.000032,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 95
+            },
+            "averageScore": 98.3,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Account Security",
+            "latency": 890,
+            "tokens": {
+              "prompt": 50,
+              "completion": 3
+            },
+            "cost": 0.00026,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Account Security",
+            "latency": 780,
+            "tokens": {
+              "prompt": 52,
+              "completion": 3
+            },
+            "cost": 0.000162,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": {
+              "rating": 2,
+              "comment": "rdew",
+              "updatedAt": "2026-07-11T07:39:08.406Z"
+            }
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-2",
+        "variables": {
+          "query": "Why was I charged $49.99 yesterday? I cancelled my subscription last month."
+        },
+        "expected": "Billing",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Billing",
+            "latency": 420,
+            "tokens": {
+              "prompt": 60,
+              "completion": 2
+            },
+            "cost": 0.000034,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 95
+            },
+            "averageScore": 98.3,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Billing",
+            "latency": 820,
+            "tokens": {
+              "prompt": 55,
+              "completion": 2
+            },
+            "cost": 0.00028,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Billing",
+            "latency": 710,
+            "tokens": {
+              "prompt": 57,
+              "completion": 2
+            },
+            "cost": 0.000171,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": null
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-3",
+        "variables": {
+          "query": "My screen is flashing red and the app crashed on load."
+        },
+        "expected": "Technical Support",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "Technical Support",
+            "latency": 480,
+            "tokens": {
+              "prompt": 58,
+              "completion": 3
+            },
+            "cost": 0.000033,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 95
+            },
+            "averageScore": 98.3,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Technical Support",
+            "latency": 920,
+            "tokens": {
+              "prompt": 53,
+              "completion": 3
+            },
+            "cost": 0.00027,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Technical Support",
+            "latency": 750,
+            "tokens": {
+              "prompt": 55,
+              "completion": 3
+            },
+            "cost": 0.000168,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 100
+            },
+            "averageScore": 100,
+            "regression": false,
+            "feedback": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "run-1783734974958",
+    "promptId": "prompt-1",
+    "promptVersion": 1,
+    "testSuiteId": "suite-1",
+    "createdAt": "2026-07-11T01:56:14.958Z",
+    "models": [
+      "gemini-1.5-flash",
+      "gemini-1.5-pro",
+      "claude-3-5-sonnet",
+      "gpt-4o"
+    ],
+    "summary": {
+      "avgScore": 77.5,
+      "avgLatency": 694,
+      "totalCost": 0.003404,
+      "testCaseCount": 3
+    },
+    "results": [
+      {
+        "testCaseId": "tc-1",
+        "variables": {
+          "query": "I am locked out of my account and need a password reset."
+        },
+        "expected": "Account Security",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "I think this falls under Accounts. Reason: The user is talking about system functions.",
+            "latency": 426,
+            "tokens": {
+              "prompt": 48,
+              "completion": 22
+            },
+            "cost": 0.00001,
+            "scores": {
+              "correctness": 20,
+              "schema": 100,
+              "coherence": 91
+            },
+            "averageScore": 70.3,
+            "regression": true,
+            "feedback": null
+          },
+          "gemini-1.5-pro": {
+            "output": "Category: Accounts\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 810,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000155,
+            "scores": {
+              "correctness": 25,
+              "schema": 100,
+              "coherence": 85
+            },
+            "averageScore": 70,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Category: Accounts\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 769,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000429,
+            "scores": {
+              "correctness": 30,
+              "schema": 100,
+              "coherence": 98
+            },
+            "averageScore": 76,
+            "regression": true,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Category: Accounts\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 825,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000525,
+            "scores": {
+              "correctness": 30,
+              "schema": 100,
+              "coherence": 91
+            },
+            "averageScore": 73.7,
+            "regression": true,
+            "feedback": null
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-2",
+        "variables": {
+          "query": "Why was I charged $49.99 yesterday? I cancelled my subscription last month."
+        },
+        "expected": "Billing",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "I think this falls under Billing. Reason: The user is talking about system functions.",
+            "latency": 355,
+            "tokens": {
+              "prompt": 53,
+              "completion": 21
+            },
+            "cost": 0.00001,
+            "scores": {
+              "correctness": 70,
+              "schema": 100,
+              "coherence": 96
+            },
+            "averageScore": 88.7,
+            "regression": true,
+            "feedback": null
+          },
+          "gemini-1.5-pro": {
+            "output": "Category: Billing\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 690,
+            "tokens": {
+              "prompt": 53,
+              "completion": 19
+            },
+            "cost": 0.000161,
+            "scores": {
+              "correctness": 75,
+              "schema": 100,
+              "coherence": 85
+            },
+            "averageScore": 86.7,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Category: Billing\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 881,
+            "tokens": {
+              "prompt": 53,
+              "completion": 19
+            },
+            "cost": 0.000444,
+            "scores": {
+              "correctness": 75,
+              "schema": 100,
+              "coherence": 90
+            },
+            "averageScore": 88.3,
+            "regression": true,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Category: Billing\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 876,
+            "tokens": {
+              "prompt": 53,
+              "completion": 19
+            },
+            "cost": 0.00055,
+            "scores": {
+              "correctness": 75,
+              "schema": 100,
+              "coherence": 85
+            },
+            "averageScore": 86.7,
+            "regression": true,
+            "feedback": null
+          }
+        }
+      },
+      {
+        "testCaseId": "tc-3",
+        "variables": {
+          "query": "My screen is flashing red and the app crashed on load."
+        },
+        "expected": "Technical Support",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "I think this falls under Technical. Reason: The user is talking about system functions.",
+            "latency": 352,
+            "tokens": {
+              "prompt": 48,
+              "completion": 22
+            },
+            "cost": 0.00001,
+            "scores": {
+              "correctness": 20,
+              "schema": 100,
+              "coherence": 96
+            },
+            "averageScore": 72,
+            "regression": true,
+            "feedback": null
+          },
+          "gemini-1.5-pro": {
+            "output": "Category: Technical\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 655,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000155,
+            "scores": {
+              "correctness": 25,
+              "schema": 100,
+              "coherence": 83
+            },
+            "averageScore": 69.3,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "Category: Technical\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 763,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000429,
+            "scores": {
+              "correctness": 30,
+              "schema": 100,
+              "coherence": 94
+            },
+            "averageScore": 74.7,
+            "regression": true,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "Category: Technical\n\nLet me know if you need additional help troubleshooting!",
+            "latency": 926,
+            "tokens": {
+              "prompt": 48,
+              "completion": 19
+            },
+            "cost": 0.000525,
+            "scores": {
+              "correctness": 30,
+              "schema": 100,
+              "coherence": 92
+            },
+            "averageScore": 74,
+            "regression": true,
+            "feedback": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "run-1784013378406",
+    "promptId": "prompt-1784013140220",
+    "promptVersion": 1,
+    "testSuiteId": "suite-2",
+    "createdAt": "2026-07-14T07:16:18.406Z",
+    "models": [
+      "gemini-1.5-flash",
+      "gemini-1.5-pro",
+      "claude-3-5-sonnet",
+      "gpt-4o"
+    ],
+    "summary": {
+      "avgScore": 95,
+      "avgLatency": 650,
+      "totalCost": 0.001259,
+      "testCaseCount": 1
+    },
+    "results": [
+      {
+        "testCaseId": "tc-4",
+        "variables": {
+          "review": "This camera is fantastic! The battery lasts for days and the image quality is crisp. However, the strap is uncomfortable and it's quite heavy to carry around."
+        },
+        "expected": "Summarized output containing pros/cons.",
+        "modelOutputs": {
+          "gemini-1.5-flash": {
+            "output": "[Simulated Response from gemini-1.5-flash]: Executed prompt v1 successfully. Expected match criteria: \"Summarized output containing pros/cons.\".",
+            "latency": 371,
+            "tokens": {
+              "prompt": 2,
+              "completion": 36
+            },
+            "cost": 0.000011,
+            "scores": {
+              "correctness": 95,
+              "schema": 100,
+              "coherence": 84
+            },
+            "averageScore": 93,
+            "regression": false,
+            "feedback": null
+          },
+          "gemini-1.5-pro": {
+            "output": "[Simulated Response from gemini-1.5-pro]: Executed prompt v1 successfully. Expected match criteria: \"Summarized output containing pros/cons.\".",
+            "latency": 658,
+            "tokens": {
+              "prompt": 2,
+              "completion": 36
+            },
+            "cost": 0.000183,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 81
+            },
+            "averageScore": 93.7,
+            "regression": false,
+            "feedback": null
+          },
+          "claude-3-5-sonnet": {
+            "output": "[Simulated Response from claude-3-5-sonnet]: Executed prompt v1 successfully. Expected match criteria: \"Summarized output containing pros/cons.\".",
+            "latency": 828,
+            "tokens": {
+              "prompt": 2,
+              "completion": 36
+            },
+            "cost": 0.000546,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 90
+            },
+            "averageScore": 96.7,
+            "regression": false,
+            "feedback": null
+          },
+          "gpt-4o": {
+            "output": "[Simulated Response from gpt-4o]: Executed prompt v1 successfully. Expected match criteria: \"Summarized output containing pros/cons.\".",
+            "latency": 743,
+            "tokens": {
+              "prompt": 2,
+              "completion": 34
+            },
+            "cost": 0.00052,
+            "scores": {
+              "correctness": 100,
+              "schema": 100,
+              "coherence": 90
+            },
+            "averageScore": 96.7,
+            "regression": false,
+            "feedback": null
+          }
+        }
+      }
+    ]
+  }
+]
